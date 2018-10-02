@@ -1,0 +1,30 @@
+{
+  "SC01_TC01": {
+    "Passengerdetails": {
+      "Gender": "Mr",
+      "FirstName": "test",
+      "LastName": "test",
+      "Email": "test@test.com",
+      "ResidenceContry": "Florida",
+      "DOB": "01/01/1994"
+    },
+    "Cruiseline": {
+       "CruiseLine": "Azamara Club Cruises"
+    },
+    "Carddetails": {
+      "Name": "Test",
+      "CardNumber": "341212121212121",
+      "ExpiryDate": "2020",
+      "CVV": "1234"
+    },
+    "BillingAddress": {
+      "BillingAddress": "Test",
+      "City": "Test",
+      "ZipCode": "99999",
+      "CustomerPhoneNo": "9999999999",
+      "Password": "Test1234",
+      "ConfirmPassword": "Test1234",
+      "Email": "test1234{AT}gmail{DOT}com"
+    }
+  }
+}
