@@ -9,18 +9,50 @@ import cucumber.api.java.en.When;
 import pageClasses.BookingFlow;
 import pageClasses.LaunchApplication;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import cucumber.api.java.After;
 
 
 public class BookingFlowStepDef extends LaunchApplication{
 
+   // private final WebDriver driver = new FirefoxDriver();
+    BookingFlow Bookflow= new BookingFlow();
+    
+    @Given("^I am on the Google search page$")
+    public void I_visit_google() {
+    	try {
+			openGoogleUrl();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   }
 
-	BookingFlow Bookflow= new BookingFlow();
+   @When("^I search for \"(.*)\"$")
+     public void search_for(String query) {
+        WebElement element = driver.findElement(By.name("q"));
+        // Enter something to search for
+        element.sendKeys(query);
+        // Now submit the form. WebDriver will find the form for us from the element
+        element.submit();
+   }
+
+  
+
+
+	
 
 	@Given("^User Launches JetBlue Application$")
 	public void launch_portal() throws Exception
 	{
 			openUrl();
-		    verifyUrlLoaded();
+		    //verifyUrlLoaded();
+		
 		
 	}
 	
@@ -31,7 +63,7 @@ public class BookingFlowStepDef extends LaunchApplication{
 		
 	}
 	
-	@When("^User clicks on Lets Cruise$")
+	@When("^User clicks on I am feeling Lucky$")
 	public void clickLetsCruise() throws Exception
 	{
 	

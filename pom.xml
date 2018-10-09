@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Spectrum-Mobile</name>
+	<name>Automation Testing</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -125,7 +125,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<projectName>Spectrum-Mobile</projectName>
+					<projectName>Automation2</projectName>
 					<outputDirectory>${project.build.directory}/JavaDoc</outputDirectory>
 				</configuration>
 			</plugin>
@@ -161,108 +161,10 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-
-			<!-- Report Merger -->
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
-				<version>1.2.1</version> <executions> <execution> <phase>post-integration-test</phase> 
-				<goals> <goal>java</goal> </goals> </execution> </executions> <configuration> 
-				<mainClass>cucumber.jvm.parallel.ReportMerger</mainClass> <arguments> <argument>target/CucumberHTMLReport/</argument> 
-				</arguments> </configuration> </plugin> -->
-
-			<plugin>
-	            <groupId>com.saucelabs.maven.plugin</groupId>
-	            <artifactId>sauce-connect-plugin</artifactId>
-	            <version>2.1.23</version>
-	            <configuration>
-	                <sauceUsername>User_Name</sauceUsername>
-	                <sauceAccessKey>293874192384713</sauceAccessKey>
-	            </configuration>
-	            <executions>
-	                <!-- Start Sauce Connect prior to running the integration tests -->
-	                <execution>
-	                    <id>start-sauceconnct</id>
-	                    <phase>pre-integration-test</phase>
-	                    <goals>
-	                        <goal>start-sauceconnect</goal>
-	                    </goals>
-	                </execution>
-	                <!-- Stop the Sauce Connect process after the integration tests have finished -->
-	                <execution>
-	                    <id>stop-sauceconnect</id>
-	                    <phase>post-integration-test</phase>
-	                    <goals>
-	                        <goal>stop-sauceconnect</goal>
-	                    </goals>
-	                </execution>
-	            </executions>
-        	</plugin>
+			</plugin>		
 			
-			<plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.2.0</version>
-                <configuration>
-                    <container>
-                        <containerId>jetty7x</containerId>
-                        <type>embedded</type>
-                    </container>
-                    <deployer>
-                        <type>embedded</type>
-                        <deployables>
-                            <deployable>
-                                <groupId>com.saucelabs</groupId>
-                                <type>war</type>
-                                <artifactId>sauce-connect-example</artifactId>
-                                <properties>
-                                    <context>/sc</context>
-                                </properties>
-                            </deployable>
-                        </deployables>
-                    </deployer>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>start-jetty</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>start</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>stop-jetty</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>stop</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-			<plugin>
-				<groupId>net.masterthought</groupId>
-				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>3.14.0</version>
-
-				<executions>
-					<execution>
-						<id>execution</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<projectName>cs</projectName>
-							<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
-							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-							<!-- <parallelTesting>true</parallelTesting> -->
-							<enableFlashCharts>false</enableFlashCharts>
-							<skippedFails>true</skippedFails>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+		
+			
 		</plugins>
 	</build>
 </project>

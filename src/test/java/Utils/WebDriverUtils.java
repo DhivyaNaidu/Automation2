@@ -19,6 +19,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import Utils.TestDataLoader;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -53,6 +54,7 @@ import cucumber.api.Scenario;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+ 
 
 public class WebDriverUtils extends Exception {
 	
@@ -122,7 +124,7 @@ public class WebDriverUtils extends Exception {
 				{
 	
 					
-					System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/src/test/drivers/geckodriver.exe");
+					System.setProperty("webdriver.gecko.driver", "D:/Eclipse/Automation2/src/test/drivers/geckodriver.exe");
 					driver= new FirefoxDriver();
 				}
 				else if (browser.equalsIgnoreCase("Chrome"))
@@ -131,7 +133,7 @@ public class WebDriverUtils extends Exception {
 					options.addArguments("disable-infobars");
 					String os = System.getProperty("os.name").toLowerCase();
 					if (!os.contains("win")) {
-						System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/test/drivers/chromedriver_Mac");
+						System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/test/drivers/chromedriver.exe");
 					}
 					else
 						System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/test/drivers/chromedriver.exe");
@@ -145,7 +147,7 @@ public class WebDriverUtils extends Exception {
 				App_log.debug(browser + " browser started on Local System");
 			}
 
-			driver.manage().window().maximize();
+			
 			driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 			ExplicitwaitObject = new WebDriverWait(driver, explicitWait);
 		} catch (Exception e) {
@@ -405,7 +407,7 @@ public class WebDriverUtils extends Exception {
 
 		By locator;
 		locator = locatorValue(locatorVal[0], locatorVal[1]);
-		
+		System.out.println("************locator***********"+locatorVal);
 		//ExplicitwaitObject.until(ExpectedConditions.elementToBeClickable(locator));
 		WebElement element = driver.findElement(locator);
 		element.click();
@@ -420,7 +422,7 @@ public class WebDriverUtils extends Exception {
 		}
 	}
 
-	public static void closeBrowser() {
+	public void closeBrowser() {
 		driver.quit();
 	}
 

@@ -35,11 +35,13 @@ public class BookingFlow extends WebDriverUtils {
 	 */
 	public void clickLetsCruise() throws Exception {
 		try {
-			isElementPresent(ORprop.getProperty("LetsCruise"));
+			//click(ORprop.getProperty("Lucky"));
+			driver.manage().window().maximize();
+			/*isElementPresent(ORprop.getProperty("LetsCruise"));
 			click(ORprop.getProperty("LetsCruise"));
 			Boolean pageVerification = isDisplayed(ORprop.getProperty("LetsCruisePage"));
 			Assert.assertTrue("Search results are not present", pageVerification);
-			App_log.debug("Successfully clicked on Lets cruise button");
+			App_log.debug("Successfully clicked on Lets cruise button"); */
 
 		} catch (Exception e) {
 
